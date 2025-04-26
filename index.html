@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Akbarr</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+      <header>
+            <h1>Selamat Datang Di Portofolio Pribadi</h1>
+              <nav>
+                <ul>
+                  <a href="#about">Tentang</a>
+                  <a href="#multimedia">Multimedia</a>
+                  <a href="#projects">Projek</a>
+                  <a href="#guestbook">Buku Tamu</a>
+                  <a href="#contact">Kontak</a>
+                </ul>
+              </nav>
+      </header>
+      <br>
+
+      <main>
+        <section id="about">
+            <h1>Tentang Saya</h1>
+              <img src="img/Foto 2.jpg" alt="Foto Profil" width="200" />
+            <h2>Halo Semua!!!</h2>
+            <p>Perkenalkan, nama saya Mohammad Akbar Firmansyah bisa dipanggil Akbar. Saya berasal dari surabaya dan saat ini berkuliah di Universitas Internasional Semen Indonesia jurusan Sistem Informasi. Saya memiliki minat yang besar dalam dunia teknologi, terutama dalam pengembangan perangkat lunak, manajemen basis data, dan analisis proses bisnis. Selama perkuliahan, saya telah mempelajari berbagai konsep terkait pemrograman, pengelolaan data, serta bagaimana sistem informasi dapat diterapkan untuk meningkatkan efisiensi bisnis.</p>
+            <h3>Beberapa Hobi Saya :</h3>
+            <ul>
+              <li>Futsal</li>
+              <li>Mendengarkan musik</li>
+              <li>Mancing</li>
+              <li>Sepak Bola</li>
+            </ul>
+        </section>
+
+        <section id="multimedia">
+            <h1>Multimedia</h1>
+            <video controls width="350">
+            <source src="img/Video Profil Dosen Sistem Informasi.mp4" type="video/mp4" />
+            </video> 
+            <p>Ini adalah video profil dosen sistem informasi</p>
+            <audio controls>
+            <source src="img/Mars UISI.mp3" type="audio/mp3">
+            </audio> 
+            <p>Ini adalah lagu mars uisi</p>
+        </section>
+
+        <section id="projects">
+          <h1>Projek/Karya</h1>
+          <div class="project-container">
+            <div class="project-item">
+              <img src="img/1.png" alt="Desain halaman daftar dan login aplikasi bengkel otomotif di Figma" />
+              <article>
+                <h3>Projek 1</h3>
+                <p>Membuat halaman daftar dan login pada aplikasi bengkel otomotif di Figma</p>
+              </article>
+            </div>
+            <div class="project-item">
+              <img src="img/2.png" alt="Desain halaman dashboard aplikasi stok produk kopi di Figma" />
+              <article>
+                <h3>Projek 2</h3>
+                <p>Membuat halaman dashboard pada aplikasi stok produk kopi di Figma</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="guestbook">
+          <h1>Buku Tamu</h1>
+          <form id="guestform">
+            <label for="name">Nama:</label>
+            <input type="text" id="guestname" name="name" required placeholder="Masukkan nama Anda">
+        
+            <label for="address">Alamat:</label>
+            <input type="text" id="guestaddress" name="address" required placeholder="Masukkan alamat Anda">
+
+            <label for="message">Pesan:</label>
+            <textarea id="guestmessage" rows="4" required placeholder="Tulis pesan di sini"></textarea>
+      
+            <button onclick="addEntry()">Tambah Tamu</button>
+
+          <h3>Daftar Tamu:</h3>
+          <div id="guestList"></div>
+        </section>
+
+        <section id="contact">
+            <h1>Hubungi Kami</h1>
+            <form>
+              <label for="name">Nama:</label>
+              <input type="text" id="name" name="name" required placeholder="Masukkan nama" />
+              <br /><br />
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required placeholder="Masukkan email" />
+              <br /><br />
+              <label for="phone">Nomor Telepon:</label>
+              <input type="tel" id="phone" name="phone" required placeholder="Masukkan nomor telepon" />
+              <br /><br />
+              <label for="subject">Subjek:</label>
+              <select id="subject" name="subject" required>
+                <option value="">Pilih subjek</option>
+                <option value="pertanyaan">Pertanyaan</option>
+                <option value="masukan">Masukan</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+              <br /><br />
+              <label for="message">Pesan:</label>
+              <textarea id="message" name="message" required placeholder="Tulis pesan di sini" rows="4"></textarea>
+              <button type="submit">Kirim</button>
+            </form>
+        </section>
+      </main>
+
+      <footer>
+       <div>
+            <p>Media Sosial</p>
+            <ul align="center">
+                <a href="https://wa.me/6283189850781">WhatsApp</a>
+                |
+                <a href="https://github.com/MohammadAkbarFirmansyah">GitHub</a>
+                |
+                <a href="https://www.instagram.com/m_akbarr_f/">Instagram</a>
+            </ul>
+        </div>
+        <div>
+          <p align="center">&copy; 2025 Mohammad Akbar Firmansyah - Semua Hak Dilindungi</p>
+        </div
+      </footer>
+  </body>
+</html>
