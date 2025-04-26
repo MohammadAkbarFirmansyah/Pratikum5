@@ -218,6 +218,14 @@ h3 {
   margin-top: 6px;
 }
 
+.done .entry-name,
+.done .entry-address,
+.done .entry-message {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.6;
+}
+
 .entry-actions {
   position: absolute;
   top: 12px;
