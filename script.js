@@ -1,74 +1,56 @@
-function addEntry() {
-  const name = document.getElementById("guestname").value;
-  const address = document.getElementById("guestaddress").value;
-  const message = document.getElementById("guestmessage").value;
+function saveData() {
+  const entries = [...document.querySelectorAll(".guest-entry")].map((entry) => ({
+    name: entry.querySelector(".entry-name").textContent,
+    address: entry.querySelector(".entry-address").textContent,
+    message: entry.querySelector(".entry-message").textContent,
+    done: entry.classList.contains("done"),
+  }));
+  localStorage.setItem("guestList", JSON.stringify(entries));
+}
 
+function loadData() {
+  const data = JSON.parse(localStorage.getItem("guestList")) || [];
+  data.forEach(({ name, address, message, done }) => createEntry(name, address, message, done));
+}
+
+function createEntry(name, address, message, done = false) {
   const guestList = document.getElementById("guestList");
-
   const entry = document.createElement("div");
-  entry.classList.add("guest-entry");
+  entry.className = "guest-entry" + (done ? " done" : "");
   entry.innerHTML = `
     <div class="entry-name">${name}</div>
     <div class="entry-address">${address}</div>
     <div class="entry-message">${message}</div>
     <div class="entry-actions">
-      <button class="done-btn">Selesai</button>
+      <button class="done-btn">${done ? "Batal" : "Selesai"}</button>
       <button class="delete-btn">Hapus</button>
     </div>
   `;
-
-  const nameEl = entry.querySelector(".entry-name");
-  const addressEl = entry.querySelector(".entry-address");
-  const messageEl = entry.querySelector(".entry-message");
-  const doneBtn = entry.querySelector(".done-btn");
-  const deleteBtn = entry.querySelector(".delete-btn");
-
-  doneBtn.addEventListener("click", () => {
-    entry.classList.toggle("done");
-
-    if (entry.classList.contains("done")) {
-      doneBtn.textContent = "Batal";
-      doneBtn.classList.add("cancel-btn");
-
-      // Coret semuanya
-      nameEl.style.textDecoration = "line-through";
-      addressEl.style.textDecoration = "line-through";
-      messageEl.style.textDecoration = "line-through";
-
-      // Kasih warna abu-abu dan transparan sedikit
-      nameEl.style.color = "gray";
-      addressEl.style.color = "gray";
-      messageEl.style.color = "gray";
-
-      nameEl.style.opacity = "0.6";
-      addressEl.style.opacity = "0.6";
-      messageEl.style.opacity = "0.6";
-    } else {
-      doneBtn.textContent = "Selesai";
-      doneBtn.classList.remove("cancel-btn");
-
-      // Balikin semua normal
-      nameEl.style.textDecoration = "none";
-      addressEl.style.textDecoration = "none";
-      messageEl.style.textDecoration = "none";
-
-      nameEl.style.color = "inherit";
-      addressEl.style.color = "inherit";
-      messageEl.style.color = "inherit";
-
-      nameEl.style.opacity = "1";
-      addressEl.style.opacity = "1";
-      messageEl.style.opacity = "1";
-    }
-  });
-
-  deleteBtn.addEventListener("click", () => {
-    const confirmDelete = confirm("Apakah Anda yakin ingin menghapus tamu ini?");
-    if (confirmDelete) {
-      guestList.removeChild(entry);
-    }
-  });
-
   guestList.prepend(entry);
+
+  const [doneBtn, deleteBtn] = entry.querySelectorAll("button");
+  doneBtn.onclick = () => {
+    entry.classList.toggle("done");
+    doneBtn.textContent = entry.classList.contains("done") ? "Batal" : "Selesai";
+    saveData();
+  };
+  deleteBtn.onclick = () => {
+    if (confirm("Apakah Anda yakin ingin menghapus tamu ini?")) {
+      entry.remove();
+      saveData();
+    }
+  };
+}
+
+function addEntry() {
+  const name = document.getElementById("guestname").value.trim();
+  const address = document.getElementById("guestaddress").value.trim();
+  const message = document.getElementById("guestmessage").value.trim();
+  if (!name || !address || !message) return alert("Semua kolom wajib diisi!");
+
+  createEntry(name, address, message);
+  saveData();
   document.getElementById("guestform").reset();
 }
+
+document.addEventListener("DOMContentLoaded", loadData);
