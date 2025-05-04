@@ -264,6 +264,74 @@ h3 {
   box-sizing: border-box;
 }
 
+/* data pengguna api */
+#apiData {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#userList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.user-card {
+  background-color: #f1f4f8;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #344ddb;
+  flex: 1 1 calc(50% - 20px);
+}
+
+/* gambar custom api */
+#apiImages {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#imageList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+#imageList img {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#imageList img:hover {
+  transform: scale(1.05);
+}
+
+#apiImages button {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#apiImages button:hover {
+  background-color: #0056b3;
+}
+
 /* Footer */
 footer {
   background-color: #343a40;
