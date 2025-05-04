@@ -21,17 +21,15 @@ function loadUsersFromAPI() {
     });
 }
 
-// Panggil saat DOM ready
 document.addEventListener("DOMContentLoaded", () => {
-  loadData(); // panggil loadData guestbook
-  loadUsersFromAPI(); // panggil load API
+  loadData(); 
+  loadUsersFromAPI(); 
 });
 
 function loadImagesFromAPI() {
   const imageList = document.getElementById("imageList");
   imageList.innerHTML = "Loading gambar...";
 
-  // Ambil 5 gambar random dari Picsum
   const totalImages = 5;
   imageList.innerHTML = "";
   for (let i = 0; i < totalImages; i++) {
@@ -42,11 +40,10 @@ function loadImagesFromAPI() {
   }
 }
 
-// Panggil sekali waktu halaman dibuka
 document.addEventListener("DOMContentLoaded", () => {
-  loadData(); // guestbook
-  loadUsersFromAPI(); // user data
-  loadImagesFromAPI(); // gambar api
+  loadData();
+  loadUsersFromAPI(); 
+  loadImagesFromAPI(); 
 });
 
 function saveData() {
