@@ -1,3 +1,54 @@
+function loadUsersFromAPI() {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json())
+    .then((data) => {
+      const userList = document.getElementById("userList");
+      userList.innerHTML = "";
+      data.forEach((user) => {
+        const div = document.createElement("div");
+        div.className = "user-card";
+        div.innerHTML = `
+          <h4>${user.name}</h4>
+          <p>Email: ${user.email}</p>
+          <p>Phone: ${user.phone}</p>
+        `;
+        userList.appendChild(div);
+      });
+    })
+    .catch((error) => {
+      console.error("Gagal mengambil data API:", error);
+      document.getElementById("userList").innerHTML = "Gagal mengambil data.";
+    });
+}
+
+// Panggil saat DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  loadData(); // panggil loadData guestbook
+  loadUsersFromAPI(); // panggil load API
+});
+
+function loadImagesFromAPI() {
+  const imageList = document.getElementById("imageList");
+  imageList.innerHTML = "Loading gambar...";
+
+  // Ambil 5 gambar random dari Picsum
+  const totalImages = 5;
+  imageList.innerHTML = "";
+  for (let i = 0; i < totalImages; i++) {
+    const img = document.createElement("img");
+    img.src = `https://picsum.photos/seed/${Math.random()}/200/200`;
+    img.alt = "Random Image";
+    imageList.appendChild(img);
+  }
+}
+
+// Panggil sekali waktu halaman dibuka
+document.addEventListener("DOMContentLoaded", () => {
+  loadData(); // guestbook
+  loadUsersFromAPI(); // user data
+  loadImagesFromAPI(); // gambar api
+});
+
 function saveData() {
   const entries = [...document.querySelectorAll(".guest-entry")].map((entry) => ({
     name: entry.querySelector(".entry-name").textContent,
